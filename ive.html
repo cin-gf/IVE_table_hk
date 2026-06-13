@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星船 IVE</title>
+    <style>
+        /* 基本設定：粉色、白色、藍色的韓系清新風格 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+            color: #34405a;
+            background: #fff8fb;
+            line-height: 1.7;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* 最大寬度限制為 1280px */
+        .wrap {
+            width: min(100%, 1280px);
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .section {
+            padding: 72px 0;
+        }
+
+        .section-title {
+            margin-bottom: 26px;
+            color: #395d96;
+            font-size: 32px;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 56px;
+            height: 3px;
+            margin: 12px auto 0;
+            border-radius: 99px;
+            background: #f6a8c8;
+        }
+
+        /* 導覽列 */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid #f6d8e5;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 68px;
+        }
+
+        .logo {
+            color: #e06b9b;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0;
+        }
+
+        .menu {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+            color: #395d96;
+            font-weight: 700;
+        }
+
+        .menu a {
+            padding: 8px 2px;
+        }
+
+        .menu a:hover {
+            color: #e06b9b;
+        }
+
+        .menu-button {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid #f2b6cf;
+            border-radius: 8px;
+            background: #fff;
+            color: #395d96;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* 首頁 Banner */
+        .hero {
+            min-height: 560px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(120deg, rgba(255, 247, 251, 0.94), rgba(226, 241, 255, 0.85)),
+                url("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/IVE_at_the_2023_Melon_Music_Awards.jpg/1280px-IVE_at_the_2023_Melon_Music_Awards.jpg");
+            background-position: center;
+            background-size: cover;
+            border-bottom: 1px solid #f8dbe8;
+        }
+
+        .hero-content {
+            max-width: 660px;
+            padding: 40px 0;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 6px 14px;
+            border: 1px solid #f0a9c7;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.75);
+            color: #d75d91;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            color: #35578f;
+            font-size: 64px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            max-width: 560px;
+            margin-top: 18px;
+            color: #52627e;
+            font-size: 18px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .btn-main {
+            background: #ed8ab4;
+            color: #fff;
+        }
+
+        .btn-sub {
+            border: 1px solid #8fb7e8;
+            background: rgba(255, 255, 255, 0.72);
+            color: #395d96;
+        }
+
+        /* 團體介紹 */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .intro-text {
+            padding: 28px;
+            border: 1px solid #f6d8e5;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 12px 28px rgba(93, 111, 145, 0.08);
+        }
+
+        .intro-text p + p {
+            margin-top: 14px;
+        }
+
+        .intro-photo {
+            overflow: hidden;
+            border: 8px solid #fff;
+            border-radius: 8px;
+            box-shadow: 0 12px 28px rgba(93, 111, 145, 0.12);
+        }
+
+        .intro-photo img {
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .small-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .info-box {
+            padding: 16px;
+            border-radius: 8px;
+            background: #edf6ff;
+            text-align: center;
+        }
+
+        .info-box strong {
+            display: block;
+            color: #e06b9b;
+            font-size: 22px;
+        }
+
+        /* 成員卡片：桌機一排 3 張 */
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .member-card {
+            overflow: hidden;
+            border: 1px solid #f5d5e4;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 12px 24px rgba(93, 111, 145, 0.08);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 34px rgba(93, 111, 145, 0.14);
+        }
+
+        .member-card.active {
+            outline: 3px solid #9dc5f2;
+        }
+
+        .member-photo {
+            height: 330px;
+            background: #f7eaf1;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .member-body {
+            padding: 20px;
+        }
+
+        .member-body h3 {
+            color: #395d96;
+            font-size: 24px;
+        }
+
+        .member-real {
+            margin-bottom: 12px;
+            color: #e06b9b;
+            font-weight: 700;
+        }
+
+        .member-list {
+            margin: 0 0 14px 18px;
+            font-size: 15px;
+        }
+
+        .member-list span {
+            font-weight: 700;
+        }
+
+        .member-desc {
+            color: #52627e;
+            font-size: 15px;
+        }
+
+        /* 代表作品 */
+        .song-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .song {
+            padding: 22px;
+            border: 1px solid #d8e8fb;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .song h3 {
+            color: #e06b9b;
+            font-size: 22px;
+        }
+
+        .song p {
+            margin-top: 8px;
+            color: #52627e;
+            font-size: 15px;
+        }
+
+        /* 頁尾 */
+        .footer {
+            padding: 28px 0;
+            background: #395d96;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer small {
+            color: #e9f3ff;
+        }
+
+        .top-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: none;
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 8px;
+            background: #ed8ab4;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(93, 111, 145, 0.2);
+        }
+
+        .top-btn.show {
+            display: block;
+        }
+
+        /* 斷點 960px：平板版一排 2 張卡片 */
+        @media (max-width: 960px) {
+            .wrap {
+                padding: 0 24px;
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .member-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .song-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 斷點 640px：手機版一排 1 張卡片 */
+        @media (max-width: 640px) {
+            .wrap {
+                padding: 0 18px;
+            }
+
+            .section {
+                padding: 52px 0;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .nav {
+                min-height: 64px;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .menu {
+                position: absolute;
+                top: 64px;
+                left: 0;
+                display: none;
+                width: 100%;
+                padding: 16px 18px;
+                background: #fff;
+                border-bottom: 1px solid #f6d8e5;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .menu.open {
+                display: flex;
+            }
+
+            .hero {
+                min-height: 470px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .small-info,
+            .member-grid,
+            .song-list {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-text {
+                padding: 22px;
+            }
+
+            .intro-photo img {
+                height: 310px;
+            }
+
+            .member-photo {
+                height: 360px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導覽列 -->
+    <header class="header">
+        <nav class="nav wrap">
+            <a href="#home" class="logo">星船 IVE</a>
+            <button class="menu-button" id="menuButton" aria-label="開啟選單">☰</button>
+            <ul class="menu" id="menu">
+                <li><a href="#home">首頁</a></li>
+                <li><a href="#about">團體介紹</a></li>
+                <li><a href="#members">成員介紹</a></li>
+                <li><a href="#works">代表作品</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 首頁大標題 Banner -->
+    <section class="hero" id="home">
+        <div class="wrap">
+            <div class="hero-content">
+                <span class="hero-tag">STARSHIP ENTERTAINMENT</span>
+                <h1>星船 IVE</h1>
+                <p>以自信、清新和舞台魅力受到喜愛的韓國女團。這個網頁用簡單的 RWD 版面介紹 IVE 的團體背景與六位成員。</p>
+                <div class="hero-actions">
+                    <a class="btn btn-main" href="#members">看成員介紹</a>
+                    <a class="btn btn-sub" href="#works">代表作品</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- 團體介紹 -->
+        <section class="section" id="about">
+            <div class="wrap">
+                <h2 class="section-title">團體介紹</h2>
+                <div class="intro-grid">
+                    <div class="intro-text">
+                        <p>IVE 是 Starship Entertainment 推出的韓國女子團體，於 2021 年 12 月 1 日以單曲專輯《ELEVEN》正式出道。團名 IVE 來自「I Have」的概念，代表成員們用音樂和舞台展現自己所擁有的魅力。</p>
+                        <p>IVE 的歌曲常帶有自信、優雅與清爽的形象，像是《LOVE DIVE》、《After LIKE》和《I AM》等作品，都展現出她們成熟又有記憶點的風格。團體由 Yujin、Gaeul、Rei、Wonyoung、Liz、Leeseo 六位成員組成。</p>
+                        <div class="small-info">
+                            <div class="info-box">
+                                <strong>2021</strong>
+                                <span>正式出道</span>
+                            </div>
+                            <div class="info-box">
+                                <strong>6</strong>
+                                <span>位成員</span>
+                            </div>
+                            <div class="info-box">
+                                <strong>DIVE</strong>
+                                <span>粉絲名</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="intro-photo">
+                        <img src="https://api.elle.com.hk/var/site/storage/images/_aliases/img_1040_780/fashion/k-pop-ive-style-file/35435132-1-chi-HK/IVE-17.jpg" alt="IVE 團體合照">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 成員介紹 -->
+        <section class="section" id="members">
+            <div class="wrap">
+                <h2 class="section-title">成員介紹</h2>
+                <div class="member-grid">
+                    <article class="member-card">
+                        <img class="member-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/IVE_Yujin_2026_GDA.jpg/500px-IVE_Yujin_2026_GDA.jpg" alt="Yujin 代表照">
+                        <div class="member-body">
+                            <h3>Yujin</h3>
+                            <p class="member-real">本名：An Yu-jin / 安兪眞</p>
+                            <ul class="member-list">
+                                <li><span>生日：</span>2003 年 9 月 1 日</li>
+                                <li><span>國籍：</span>韓國</li>
+                                <li><span>定位：</span>隊長、Vocal、Dance</li>
+                            </ul>
+                            <p class="member-desc">Yujin 是團體隊長，舞台表現穩定，給人明亮又有力量的印象。她在綜藝與主持方面也很活躍，是 IVE 很可靠的核心成員。</p>
+                        </div>
+                    </article>
+
+                    <article class="member-card">
+                        <img class="member-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Gaeul_of_Ive_at_Senka_Pop-up_Event%2C_May_19%2C_2026_%281%29.png/500px-Gaeul_of_Ive_at_Senka_Pop-up_Event%2C_May_19%2C_2026_%281%29.png" alt="Gaeul 代表照">
+                        <div class="member-body">
+                            <h3>Gaeul</h3>
+                            <p class="member-real">本名：Kim Ga-eul / 金秋天</p>
+                            <ul class="member-list">
+                                <li><span>生日：</span>2002 年 9 月 24 日</li>
+                                <li><span>國籍：</span>韓國</li>
+                                <li><span>定位：</span>Rap、Dance</li>
+                            </ul>
+                            <p class="member-desc">Gaeul 是團內成熟沉穩的成員，舞蹈線條俐落，Rap 表現也很有個人特色。她的氣質讓 IVE 的舞台更有層次感。</p>
+                        </div>
+                    </article>
+
+                    <article class="member-card">
+                        <img class="member-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Ive%27s_Rei_%40_OPENING_PROJECTxSATUR_PhotoCall%2C_12_June_2025_01.png/500px-Ive%27s_Rei_%40_OPENING_PROJECTxSATUR_PhotoCall%2C_12_June_2025_01.png" alt="Rei 代表照">
+                        <div class="member-body">
+                            <h3>Rei</h3>
+                            <p class="member-real">本名：Naoi Rei / 直井怜</p>
+                            <ul class="member-list">
+                                <li><span>生日：</span>2004 年 2 月 3 日</li>
+                                <li><span>國籍：</span>日本</li>
+                                <li><span>定位：</span>Rap、Vocal</li>
+                            </ul>
+                            <p class="member-desc">Rei 來自日本，聲音辨識度高，Rap 風格可愛又有節奏感。她也曾參與部分歌曲的歌詞創作，展現音樂上的想法。</p>
+                        </div>
+                    </article>
+
+                    <article class="member-card">
+                        <img class="member-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Jang_Won-young_at_the_Bulgari_Eclettica_event_in_Seoul%2C_May_12%2C_2026_%281%29.png/500px-Jang_Won-young_at_the_Bulgari_Eclettica_event_in_Seoul%2C_May_12%2C_2026_%281%29.png" alt="Wonyoung 代表照">
+                        <div class="member-body">
+                            <h3>Wonyoung</h3>
+                            <p class="member-real">本名：Jang Won-young / 張員瑛</p>
+                            <ul class="member-list">
+                                <li><span>生日：</span>2004 年 8 月 31 日</li>
+                                <li><span>國籍：</span>韓國</li>
+                                <li><span>定位：</span>Vocal、Center</li>
+                            </ul>
+                            <p class="member-desc">Wonyoung 以亮眼外型和自然的鏡頭魅力受到關注，舞台上常展現優雅又自信的風格，也是團體中很具代表性的成員。</p>
+                        </div>
+                    </article>
+
+                    <article class="member-card">
+                        <img class="member-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Liz_of_Ive_at_K-SWISS_Flagship_Store_Open_Event%2C_May_7%2C_2026_%281%29.png/500px-Liz_of_Ive_at_K-SWISS_Flagship_Store_Open_Event%2C_May_7%2C_2026_%281%29.png" alt="Liz 代表照">
+                        <div class="member-body">
+                            <h3>Liz</h3>
+                            <p class="member-real">本名：Kim Ji-won / 金志垣</p>
+                            <ul class="member-list">
+                                <li><span>生日：</span>2004 年 11 月 21 日</li>
+                                <li><span>國籍：</span>韓國</li>
+                                <li><span>定位：</span>Vocal</li>
+                            </ul>
+                            <p class="member-desc">Liz 的聲線清亮，演唱時常帶有柔和又穩定的情感。她在歌曲中負責許多旋律段落，讓 IVE 的音樂更有溫度。</p>
+                        </div>
+                    </article>
+
+                    <article class="member-card">
+                        <img class="member-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Leeseo_of_Ive%2C_March_19%2C_2026_%283%29.png/500px-Leeseo_of_Ive%2C_March_19%2C_2026_%283%29.png" alt="Leeseo 代表照">
+                        <div class="member-body">
+                            <h3>Leeseo</h3>
+                            <p class="member-real">本名：Lee Hyun-seo / 李賢瑞</p>
+                            <ul class="member-list">
+                                <li><span>生日：</span>2007 年 2 月 21 日</li>
+                                <li><span>國籍：</span>韓國</li>
+                                <li><span>定位：</span>Vocal、忙內</li>
+                            </ul>
+                            <p class="member-desc">Leeseo 是團體中年紀最小的成員，表情管理和舞台適應力都很出色。她清新的形象讓 IVE 更有青春感。</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 代表作品 -->
+        <section class="section" id="works">
+            <div class="wrap">
+                <h2 class="section-title">代表作品</h2>
+                <div class="song-list">
+                    <article class="song">
+                        <h3>ELEVEN</h3>
+                        <p>IVE 的出道曲，旋律有記憶點，也讓大眾快速認識她們的團體風格。</p>
+                    </article>
+                    <article class="song">
+                        <h3>LOVE DIVE</h3>
+                        <p>以優雅又神秘的氛圍受到喜愛，是 IVE 很具代表性的熱門歌曲。</p>
+                    </article>
+                    <article class="song">
+                        <h3>After LIKE</h3>
+                        <p>歌曲加入復古又明亮的元素，展現出更活潑的舞台能量。</p>
+                    </article>
+                    <article class="song">
+                        <h3>I AM</h3>
+                        <p>歌詞和旋律都帶有向前邁進的感覺，很適合表現 IVE 自信的形象。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="footer">
+        <div class="wrap">
+            <p>星船 IVE 成員介紹網頁</p>
+            <small>學生作業練習使用：HTML、CSS、JavaScript 與 RWD 響應式設計</small>
+        </div>
+    </footer>
+
+    <button class="top-btn" id="topBtn" aria-label="回到最上方">↑</button>
+
+    <script>
+        // 手機版選單開關
+        const menuButton = document.getElementById("menuButton");
+        const menu = document.getElementById("menu");
+        const topBtn = document.getElementById("topBtn");
+        const cards = document.querySelectorAll(".member-card");
+
+        menuButton.addEventListener("click", function () {
+            menu.classList.toggle("open");
+        });
+
+        // 點擊導覽連結後，手機選單會自動收起
+        menu.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                menu.classList.remove("open");
+            });
+        });
+
+        // 捲動後顯示回到上方按鈕
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 360) {
+                topBtn.classList.add("show");
+            } else {
+                topBtn.classList.remove("show");
+            }
+        });
+
+        topBtn.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        // 點擊成員卡片時加上藍色外框，做簡單互動效果
+        cards.forEach(function (card) {
+            card.addEventListener("click", function () {
+                cards.forEach(function (item) {
+                    item.classList.remove("active");
+                });
+                card.classList.add("active");
+            });
+        });
+    </script>
+</body>
+</html>
