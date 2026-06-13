@@ -236,6 +236,79 @@
             font-size: 22px;
         }
 
+        /* 團體魅力：使用 CSS Grid 做三欄卡片 */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .concept-card {
+            padding: 26px;
+            border: 1px solid #f6d8e5;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 12px 24px rgba(93, 111, 145, 0.08);
+        }
+
+        .concept-card span {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: #edf6ff;
+            color: #395d96;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .concept-card h3 {
+            margin-bottom: 10px;
+            color: #e06b9b;
+            font-size: 22px;
+        }
+
+        .concept-card p {
+            color: #52627e;
+            font-size: 15px;
+        }
+
+        /* 簡單時間軸 */
+        .timeline {
+            max-width: 860px;
+            margin: 44px auto 0;
+            border-left: 3px solid #9dc5f2;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-left: 24px;
+            padding: 0 0 26px 24px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -33px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            background: #ed8ab4;
+            box-shadow: 0 0 0 2px #ed8ab4;
+        }
+
+        .timeline-item h3 {
+            color: #395d96;
+            font-size: 22px;
+        }
+
+        .timeline-item p {
+            margin-top: 4px;
+            color: #52627e;
+        }
+
         /* 成員卡片：桌機一排 3 張 */
         .member-grid {
             display: grid;
@@ -300,7 +373,7 @@
         /* 代表作品 */
         .song-list {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 18px;
         }
 
@@ -320,6 +393,106 @@
             margin-top: 8px;
             color: #52627e;
             font-size: 15px;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .tag {
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: #edf6ff;
+            color: #395d96;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* 官方手燈與應援文化 */
+        .lightstick-section {
+            background: linear-gradient(180deg, #fff8fb 0%, #eef7ff 100%);
+        }
+
+        .lightstick-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .lightstick-info {
+            padding: 28px;
+            border: 1px solid #f6d8e5;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 12px 28px rgba(93, 111, 145, 0.08);
+        }
+
+        .lightstick-info .sub-title {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: #edf6ff;
+            color: #395d96;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .lightstick-info p {
+            color: #52627e;
+        }
+
+        .lightstick-timeline {
+            display: grid;
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .lightstick-item {
+            padding: 16px 18px;
+            border-left: 4px solid #ed8ab4;
+            border-radius: 8px;
+            background: #fff8fb;
+        }
+
+        .lightstick-item h3 {
+            color: #395d96;
+            font-size: 18px;
+        }
+
+        .lightstick-item p {
+            margin-top: 4px;
+            font-size: 15px;
+        }
+
+        .lightstick-photo {
+            padding: 18px;
+            border: 1px solid #d8e8fb;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 12px 28px rgba(93, 111, 145, 0.1);
+        }
+
+        .lightstick-photo figure + figure {
+            margin-top: 18px;
+        }
+
+        .lightstick-photo img {
+            height: 360px;
+            border-radius: 8px;
+            background: #f7eaf1;
+            object-fit: cover;
+        }
+
+        .lightstick-photo p {
+            margin-top: 12px;
+            color: #52627e;
+            font-size: 14px;
+            text-align: left;
         }
 
         /* 頁尾 */
@@ -376,9 +549,15 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .lightstick-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .concept-grid,
             .song-list {
                 grid-template-columns: repeat(2, 1fr);
             }
+
         }
 
         /* 斷點 640px：手機版一排 1 張卡片 */
@@ -433,9 +612,14 @@
             }
 
             .small-info,
+            .concept-grid,
             .member-grid,
             .song-list {
                 grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                margin-left: 8px;
             }
 
             .intro-text {
@@ -449,6 +633,14 @@
             .member-photo {
                 height: 360px;
             }
+
+            .lightstick-info {
+                padding: 22px;
+            }
+
+            .lightstick-photo img {
+                height: 300px;
+            }
         }
     </style>
 </head>
@@ -461,8 +653,10 @@
             <ul class="menu" id="menu">
                 <li><a href="#home">首頁</a></li>
                 <li><a href="#about">團體介紹</a></li>
+                <li><a href="#concept">團體魅力</a></li>
                 <li><a href="#members">成員介紹</a></li>
                 <li><a href="#works">代表作品</a></li>
+                <li><a href="#lightstick">應援與手燈</a></li>
             </ul>
         </nav>
     </header>
@@ -473,7 +667,7 @@
             <div class="hero-content">
                 <span class="hero-tag">STARSHIP ENTERTAINMENT</span>
                 <h1>星船 IVE</h1>
-                <p>以自信、清新和舞台魅力受到喜愛的韓國女團。這個網頁用簡單的 RWD 版面介紹 IVE 的團體背景與六位成員。</p>
+                <p>以「I HAVE」為名，IVE 用自信而鮮明的音樂風格展現屬於自己的魅力。從《ELEVEN》的初登場，到《LOVE DIVE》、《I AM》等代表作品，她們以優雅、明亮又充滿態度的舞台形象，成為備受關注的韓國女子團體。</p>
                 <div class="hero-actions">
                     <a class="btn btn-main" href="#members">看成員介紹</a>
                     <a class="btn btn-sub" href="#works">代表作品</a>
@@ -489,8 +683,8 @@
                 <h2 class="section-title">團體介紹</h2>
                 <div class="intro-grid">
                     <div class="intro-text">
-                        <p>IVE 是 Starship Entertainment 推出的韓國女子團體，於 2021 年 12 月 1 日以單曲專輯《ELEVEN》正式出道。團名 IVE 來自「I Have」的概念，代表成員們用音樂和舞台展現自己所擁有的魅力。</p>
-                        <p>IVE 的歌曲常帶有自信、優雅與清爽的形象，像是《LOVE DIVE》、《After LIKE》和《I AM》等作品，都展現出她們成熟又有記憶點的風格。團體由 Yujin、Gaeul、Rei、Wonyoung、Liz、Leeseo 六位成員組成。</p>
+                        <p>IVE 是 Starship Entertainment 推出的六人女子團體，2021 年以《ELEVEN》正式出道。團名來自「I Have」，代表她們以自己的音樂、態度與舞台表現，展現已經擁有的魅力。</p>
+                        <p>IVE 的風格不只停留在清新女團形象，而是帶有自信、優雅和鮮明的概念感。《LOVE DIVE》、《After LIKE》、《I AM》等作品讓大眾看見她們不同階段的音樂表現，也讓 Yujin、Gaeul、Rei、Wonyoung、Liz、Leeseo 六位成員的個人特色更加突出。</p>
                         <div class="small-info">
                             <div class="info-box">
                                 <strong>2021</strong>
@@ -508,6 +702,58 @@
                     </div>
                     <div class="intro-photo">
                         <img src="https://api.elle.com.hk/var/site/storage/images/_aliases/img_1040_780/fashion/k-pop-ive-style-file/35435132-1-chi-HK/IVE-17.jpg" alt="IVE 團體合照">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 團體魅力 -->
+        <section class="section" id="concept">
+            <div class="wrap">
+                <h2 class="section-title">團體魅力</h2>
+                <div class="concept-grid">
+                    <article class="concept-card">
+                        <span>Confidence</span>
+                        <h3>自信形象</h3>
+                        <p>IVE 的音樂常傳達自我肯定與從容態度，讓聽眾感受到明亮、有力量的訊息。</p>
+                    </article>
+                    <article class="concept-card">
+                        <span>Elegant Mood</span>
+                        <h3>高級感風格</h3>
+                        <p>MV、舞台與造型多呈現優雅、時尚、乾淨的視覺印象，形成鮮明的團體辨識度。</p>
+                    </article>
+                    <article class="concept-card">
+                        <span>Stage Presence</span>
+                        <h3>舞台魅力</h3>
+                        <p>成員在表情管理、隊形與舞台表現上具有辨識度，能把歌曲概念完整地呈現出來。</p>
+                    </article>
+                </div>
+
+                <!-- 團體發展時間軸 -->
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>2021</h3>
+                        <p>IVE 以《ELEVEN》正式出道，憑藉清新而具有記憶點的風格開啟團體活動。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>2022</h3>
+                        <p>《LOVE DIVE》與《After LIKE》接連受到關注，奠定 IVE 優雅、自信且大眾化的音樂形象。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>2023</h3>
+                        <p>《I AM》延續自我肯定的主題，使 IVE 的團體概念從青春魅力擴展到成長與獨立態度。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>2024</h3>
+                        <p>《HEYA》與《Accendio》展現更華麗的視覺敘事，讓 IVE 的音樂與舞台概念更具戲劇張力。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>2025</h3>
+                        <p>《REBEL HEART》與《ATTITUDE》延續強烈的自信主軸，呈現 IVE 更成熟且鮮明的音樂態度。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>2026</h3>
+                        <p>IVE 持續以新作品、舞台活動與多元企劃拓展團體表現，展現出持續變化的女團魅力。</p>
                     </div>
                 </div>
             </div>
@@ -613,28 +859,106 @@
                     <article class="song">
                         <h3>ELEVEN</h3>
                         <p>IVE 的出道曲，旋律有記憶點，也讓大眾快速認識她們的團體風格。</p>
+                        <div class="tag-list">
+                            <span class="tag">出道曲</span>
+                            <span class="tag">神秘感</span>
+                        </div>
                     </article>
                     <article class="song">
                         <h3>LOVE DIVE</h3>
                         <p>以優雅又神秘的氛圍受到喜愛，是 IVE 很具代表性的熱門歌曲。</p>
+                        <div class="tag-list">
+                            <span class="tag">高級感</span>
+                            <span class="tag">代表作</span>
+                        </div>
                     </article>
                     <article class="song">
                         <h3>After LIKE</h3>
                         <p>歌曲加入復古又明亮的元素，展現出更活潑的舞台能量。</p>
+                        <div class="tag-list">
+                            <span class="tag">復古</span>
+                            <span class="tag">明亮</span>
+                        </div>
                     </article>
                     <article class="song">
                         <h3>I AM</h3>
                         <p>歌詞和旋律都帶有向前邁進的感覺，很適合表現 IVE 自信的形象。</p>
+                        <div class="tag-list">
+                            <span class="tag">自信</span>
+                            <span class="tag">成長</span>
+                        </div>
+                    </article>
+                    <article class="song">
+                        <h3>Baddie</h3>
+                        <p>以更強烈的節奏和態度展現 IVE 酷帥的一面，和清新形象形成對比。</p>
+                        <div class="tag-list">
+                            <span class="tag">酷帥</span>
+                            <span class="tag">強烈風格</span>
+                        </div>
+                    </article>
+                    <article class="song">
+                        <h3>HEYA</h3>
+                        <p>結合華麗概念與鮮明視覺，讓歌曲在舞台和 MV 中都有很強的畫面感。</p>
+                        <div class="tag-list">
+                            <span class="tag">東方感</span>
+                            <span class="tag">華麗概念</span>
+                        </div>
                     </article>
                 </div>
             </div>
         </section>
+
+        <!-- 官方手燈與應援文化 -->
+        <section class="section lightstick-section" id="lightstick">
+            <div class="wrap">
+                <h2 class="section-title">應援與手燈</h2>
+                <div class="lightstick-grid">
+                    <div class="lightstick-info">
+                        <span class="sub-title">Official Light Stick &amp; DIVE</span>
+                        <p>DIVE 是 IVE 的粉絲名，帶有一起投入 IVE 世界、陪伴團體前進的意思。除了音樂作品之外，粉絲在演唱會、打歌舞台與活動現場的應援，也讓 IVE 的舞台氣氛更完整。</p>
+                        <p>官方手燈是 DIVE 在現場應援時很重要的象徵。燈光隨著歌曲、口號與舞台節奏亮起，讓觀眾席成為表演的一部分，也把粉絲與成員之間的連結用更直觀的方式呈現出來。</p>
+
+                        <div class="lightstick-timeline">
+                            <div class="lightstick-item">
+                                <h3>粉絲名 DIVE</h3>
+                                <p>DIVE 代表粉絲與 IVE 一起投入音樂和舞台世界，是團體活動中很重要的陪伴者。</p>
+                            </div>
+                            <div class="lightstick-item">
+                                <h3>官方手燈公開後</h3>
+                                <p>手燈成為現場應援的重要物品，粉絲可以用一致的燈光顏色與節奏支持成員。</p>
+                            </div>
+                            <div class="lightstick-item">
+                                <h3>外觀特色</h3>
+                                <p>官方手燈通常會結合團體標誌與乾淨明亮的設計，呼應 IVE 優雅又清新的形象。</p>
+                            </div>
+                            <div class="lightstick-item">
+                                <h3>演唱會活動中</h3>
+                                <p>在演唱會和公開舞台上，手燈會隨著歌曲情緒形成燈海，讓應援不只是聲音，也成為舞台畫面的一部分。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lightstick-photo">
+                        <figure>
+                            <img src="https://www.5music.com.tw/cdpic/zn2/82023212797.jpg" alt="IVE 官方手燈一代">
+                            <p>IVE 官方手燈一代以簡潔明亮的外觀呈現團體形象，是 DIVE 在演唱會與活動現場常見的應援象徵。</p>
+                        </figure>
+                        <figure>
+                            <img src="https://media.95music.com/product/K/K-IVE-LS2.jpg" alt="IVE 官方手燈二代">
+                            <p>IVE 官方手燈二代延續清爽俐落的設計感，讓現場燈光應援更有一致性，也更貼近團體成熟後的視覺風格。</p>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- 頁尾 -->
     <footer class="footer">
         <div class="wrap">
-            <p>星船 IVE 成員介紹網頁</p>
+            <p>STARSHIP IVE</p>
+            <small>以團體背景、成員特色與代表作品，認識 IVE 的音樂風格與舞台魅力。</small>
         </div>
     </footer>
 
