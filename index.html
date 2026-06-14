@@ -119,17 +119,34 @@
             min-height: 560px;
             display: flex;
             align-items: center;
-            background:
-                linear-gradient(120deg, rgba(255, 247, 251, 0.94), rgba(226, 241, 255, 0.85)),
-                url("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/IVE_at_the_2023_Melon_Music_Awards.jpg/1280px-IVE_at_the_2023_Melon_Music_Awards.jpg");
-            background-position: center;
-            background-size: cover;
+            background: linear-gradient(120deg, #fff7fb, #eaf4ff);
             border-bottom: 1px solid #f8dbe8;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 40px;
+            align-items: center;
         }
 
         .hero-content {
             max-width: 660px;
             padding: 40px 0;
+        }
+
+        .hero-photo {
+            overflow: hidden;
+            border: 8px solid #fff;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 12px 28px rgba(93, 111, 145, 0.12);
+        }
+
+        .hero-photo img {
+            height: 420px;
+            object-fit: cover;
+            object-position: center center;
         }
 
         .hero-tag {
@@ -342,7 +359,7 @@
         .member-photo {
             height: 330px;
             background: #f7eaf1;
-            object-fit: cover;
+            object-fit: cover; 
             object-position: top center;
         }
 
@@ -542,8 +559,17 @@
                 min-height: 500px;
             }
 
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
             .hero h1 {
                 font-size: 52px;
+            }
+
+            .hero-photo img {
+                height: 360px;
             }
 
             .intro-grid {
@@ -612,6 +638,10 @@
                 font-size: 40px;
             }
 
+            .hero-photo img {
+                height: 260px;
+            }
+
             .hero p {
                 font-size: 16px;
             }
@@ -668,7 +698,7 @@
 
     <!-- 首頁大標題 Banner -->
     <section class="hero" id="home">
-        <div class="wrap">
+        <div class="wrap hero-grid">
             <div class="hero-content">
                 <span class="hero-tag">STARSHIP ENTERTAINMENT</span>
                 <h1>星船 IVE</h1>
@@ -677,6 +707,10 @@
                     <a class="btn btn-main" href="#members">看成員介紹</a>
                     <a class="btn btn-sub" href="#works">代表作品</a>
                 </div>
+            </div>
+
+            <div class="hero-photo">
+                <img src="https://www.hikpop.ru/wp-content/uploads/2026/01/IVE-Confirms-February-Comeback-Ahead-of-Second-World-Tour-1.jpg" alt="IVE 團體形象照">
             </div>
         </div>
     </section>
@@ -770,7 +804,7 @@
                 <h2 class="section-title">成員介紹</h2>
                 <div class="member-grid">
                     <article class="member-card">
-                        <img class="member-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/IVE_Yujin_2026_GDA.jpg/500px-IVE_Yujin_2026_GDA.jpg" alt="Yujin 代表照">
+                        <img class="member-photo" src="https://megapx-assets.dcard.tw/images/f7947234-b7d0-492e-8428-e22df9896cbd/orig.png" alt="Yujin 代表照">
                         <div class="member-body">
                             <h3>Yujin</h3>
                             <p class="member-real">本名：An Yu-jin / 安兪眞</p>
@@ -784,7 +818,7 @@
                     </article>
 
                     <article class="member-card">
-                        <img class="member-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Gaeul_of_Ive_at_Senka_Pop-up_Event%2C_May_19%2C_2026_%281%29.png/500px-Gaeul_of_Ive_at_Senka_Pop-up_Event%2C_May_19%2C_2026_%281%29.png" alt="Gaeul 代表照">
+                        <img class="member-photo" src="https://megapx-assets.dcard.tw/images/5c37c7c1-e77e-4696-b4b1-3098c6ca23e0/640.jpeg" alt="Gaeul 代表照">
                         <div class="member-body">
                             <h3>Gaeul</h3>
                             <p class="member-real">本名：Kim Ga-eul / 金秋天</p>
@@ -798,7 +832,7 @@
                     </article>
 
                     <article class="member-card">
-                        <img class="member-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Ive%27s_Rei_%40_OPENING_PROJECTxSATUR_PhotoCall%2C_12_June_2025_01.png/500px-Ive%27s_Rei_%40_OPENING_PROJECTxSATUR_PhotoCall%2C_12_June_2025_01.png" alt="Rei 代表照">
+                        <img class="member-photo" src="https://v3-statics.mirrormedia.mg/images/20230411162208-79067d02680ca57d266c5396fa40a38d-w1200.jpg" alt="Rei 代表照">
                         <div class="member-body">
                             <h3>Rei</h3>
                             <p class="member-real">本名：Naoi Rei / 直井怜</p>
@@ -812,7 +846,7 @@
                     </article>
 
                     <article class="member-card">
-                        <img class="member-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Jang_Won-young_at_the_Bulgari_Eclettica_event_in_Seoul%2C_May_12%2C_2026_%281%29.png/500px-Jang_Won-young_at_the_Bulgari_Eclettica_event_in_Seoul%2C_May_12%2C_2026_%281%29.png" alt="Wonyoung 代表照">
+                        <img class="member-photo" src="https://bkimg.cdn.bcebos.com/smart/5366d0160924ab18972b54ae73a2f1cd7b899f519da8-bkimg-process,v_1,rw_1440,rh_1800,maxl_504?x-bce-process=image/format,f_auto" alt="Wonyoung 代表照" >
                         <div class="member-body">
                             <h3>Wonyoung</h3>
                             <p class="member-real">本名：Jang Won-young / 張員瑛</p>
@@ -826,7 +860,7 @@
                     </article>
 
                     <article class="member-card">
-                        <img class="member-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Liz_of_Ive_at_K-SWISS_Flagship_Store_Open_Event%2C_May_7%2C_2026_%281%29.png/500px-Liz_of_Ive_at_K-SWISS_Flagship_Store_Open_Event%2C_May_7%2C_2026_%281%29.png" alt="Liz 代表照">
+                        <img class="member-photo" src="https://megapx-assets.dcard.tw/images/456464bf-eb39-4aff-b255-ee05173d4ef7/640.jpeg" alt="Liz 代表照">
                         <div class="member-body">
                             <h3>Liz</h3>
                             <p class="member-real">本名：Kim Ji-won / 金志垣</p>
@@ -840,7 +874,7 @@
                     </article>
 
                     <article class="member-card">
-                        <img class="member-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Leeseo_of_Ive%2C_March_19%2C_2026_%283%29.png/500px-Leeseo_of_Ive%2C_March_19%2C_2026_%283%29.png" alt="Leeseo 代表照">
+                        <img class="member-photo" src="https://img.kpopdata.com/upload/content/102/368/1920690acbce20b5e513.jpeg" alt="Leeseo 代表照">
                         <div class="member-body">
                             <h3>Leeseo</h3>
                             <p class="member-real">本名：Lee Hyun-seo / 李賢瑞</p>
