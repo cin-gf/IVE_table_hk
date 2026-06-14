@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>星船 IVE</title>
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYxH2VvLXj45fw83zVv1hPqQpPOy_hL0L2Ow&s" type="image/png">
     <style>
         /* 基本設定：粉色、白色、藍色的韓系清新風格 */
         * {
@@ -171,17 +172,21 @@
             padding: 10px 20px;
             border-radius: 8px;
             font-weight: 700;
+            transition: background 0.25s, border-color 0.25s, color 0.25s;
         }
 
-        .btn-main {
-            background: #ed8ab4;
-            color: #fff;
-        }
-
+        .btn-main,
         .btn-sub {
             border: 1px solid #8fb7e8;
             background: rgba(255, 255, 255, 0.72);
             color: #395d96;
+        }
+
+        .btn-main:hover,
+        .btn-sub:hover {
+            border-color: #ed8ab4;
+            background: #ed8ab4;
+            color: #fff;
         }
 
         /* 團體介紹 */
